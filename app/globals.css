@@ -147,3 +147,17 @@ footer > span { font-size: 10px; color: #64748B; }
   .how { padding: 48px 24px; }
   footer { align-items: flex-start; flex-direction: column; }
 }
+
+.store-pill { border: 1px solid var(--line); background: white; color: var(--navy); border-radius: 20px; padding: 9px 13px; font-size: 11px; font-weight: 700; }
+.searchbar button:disabled { opacity: .65; cursor: wait; }
+.integration-panel { margin-top: 28px; display: flex; align-items: flex-start; gap: 18px; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: white; box-shadow: 0 10px 30px #0F172A08; }
+.integration-icon { width: 54px; height: 54px; flex: 0 0 54px; border-radius: 16px; display: grid; place-items: center; background: #FFF1E6; font-size: 27px; }
+.integration-content strong { display: block; color: var(--navy); font: 800 17px Manrope; }
+.integration-content p { max-width: 720px; margin: 8px 0 13px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.integration-status { display: inline-flex; align-items: center; gap: 7px; color: #92400E; background: var(--amber-pale); border-radius: 20px; padding: 6px 10px; font-size: 10px; font-weight: 700; }
+.integration-status i { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
+@media (max-width: 620px) {
+  .store-pill { padding: 8px 10px; font-size: 10px; }
+  .integration-panel { padding: 18px; gap: 12px; }
+  .integration-icon { width: 42px; height: 42px; flex-basis: 42px; font-size: 22px; }
+}
