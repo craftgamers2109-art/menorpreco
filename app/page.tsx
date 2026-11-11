@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 type SearchState = "idle" | "loading" | "pending" | "error";
 
@@ -9,7 +9,7 @@ export default function Home() {
   const [state, setState] = useState<SearchState>("idle");
   const [message, setMessage] = useState("");
 
-  async function buscarOfertas(event: React.FormEvent<HTMLFormElement>) {
+  async function buscarOfertas(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const termo = search.trim();
     if (!termo) {
