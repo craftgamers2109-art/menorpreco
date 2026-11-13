@@ -45,10 +45,21 @@ export default function Home() {
 
     try {
       const response = await fetch(`/api/shopee?q=${encodeURIComponent(termo)}`);
-      const data = await response.json();
+      const responseText = await response.text();
+      let data: any;
+
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        const preview = responseText.replace(/\s+/g, " ").slice(0, 180);
+        setMessage(`O servidor respondeu de forma inesperada (HTTP ${response.status}). ${preview || "Resposta vazia."}`);
+        setState("error");
+        return;
+      }
 
       if (!response.ok || data.status !== "success") {
-        setMessage(data.message || "Não foi possível consultar as ofertas agora.");
+        const detail = data.diagnostic ? ` Detalhe técnico: ${data.diagnostic}` : "";
+        setMessage((data.message || "Não foi possível consultar as ofertas agora.") + detail + ` (HTTP ${response.status})`);
         setState("error");
         return;
       }
@@ -60,8 +71,9 @@ export default function Home() {
           : `Nenhuma oferta encontrada para “${termo}”. Tente outro termo.`
       );
       setState("success");
-    } catch {
-      setMessage("Não foi possível consultar o serviço agora. Tente novamente em instantes.");
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : "Falha desconhecida no navegador.";
+      setMessage(`Falha ao chamar o servidor do MenorPreço: ${detail}`);
       setState("error");
     }
   }
