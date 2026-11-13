@@ -154,7 +154,15 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     // Registra apenas a mensagem técnica; nunca registra App ID, Secret ou assinatura.
-    const diagnostic = error instanceof Error ? error.message : "Falha desconhecida na requisição";
+    const err = error instanceof Error ? error as Error & { cause?: { name?: string; code?: string; message?: string } } : null;
+    const cause = err?.cause;
+    const diagnostic = [
+      err?.name || "Error",
+      err?.message || "Falha desconhecida na requisição",
+      cause?.name,
+      cause?.code,
+      cause?.message
+    ].filter(Boolean).join(" | ");
     console.error("[Shopee API] Falha de conexão:", diagnostic);
 
     return NextResponse.json(
