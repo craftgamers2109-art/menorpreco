@@ -161,3 +161,29 @@ footer > span { font-size: 10px; color: #64748B; }
   .integration-panel { padding: 18px; gap: 12px; }
   .integration-icon { width: 42px; height: 42px; flex-basis: 42px; font-size: 22px; }
 }
+
+
+.search-feedback { margin-top: 26px; padding: 15px 18px; border: 1px solid #BBF7D0; border-radius: 12px; background: #F0FDF4; color: #166534; font-size: 12px; font-weight: 600; }
+.search-feedback-error { border-color: #FECACA; background: #FEF2F2; color: #991B1B; }
+.offer-card { overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: white; transition: transform .2s, box-shadow .2s; }
+.offer-card:hover { transform: translateY(-3px); box-shadow: 0 14px 35px #0F172A12; }
+.offer-image { height: 190px; display: grid; place-items: center; position: relative; background: #fff; padding: 12px; }
+.offer-image img { width: 100%; height: 100%; object-fit: contain; }
+.offer-image-fallback { font-size: 64px; }
+.offer-discount { position: absolute; top: 12px; left: 12px; padding: 6px 8px; border-radius: 6px; background: #FFF1E6; color: #C2410C; font-size: 10px; font-weight: 800; }
+.offer-info { padding: 14px; }
+.offer-store { display: block; color: #64748B; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
+.offer-info h3 { min-height: 54px; margin: 8px 0; color: var(--navy); font-size: 12px; line-height: 1.5; }
+.offer-rating { margin: 6px 0; color: #D97706; font-size: 11px; font-weight: 800; }
+.offer-rating span { color: #64748B; font-weight: 500; }
+.offer-price { margin-top: 12px; color: var(--navy); font: 800 21px Manrope; letter-spacing: -.5px; }
+.offer-price small { font: 500 10px 'DM Sans'; color: #64748B; }
+.offer-sales { margin-top: 5px; color: #64748B; font-size: 10px; }
+.offer-button { display: block; margin-top: 14px; padding: 11px 8px; border-radius: 9px; background: var(--orange); color: white; text-align: center; text-decoration: none; font-size: 11px; font-weight: 800; }
+.offer-button:hover { background: var(--orange-dark); }
+@media (max-width: 620px) {
+  .offer-image { height: 145px; }
+  .offer-info { padding: 11px; }
+  .offer-info h3 { min-height: 66px; font-size: 11px; }
+  .offer-price { font-size: 17px; }
+}
