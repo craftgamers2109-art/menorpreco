@@ -152,9 +152,17 @@ export async function GET(request: Request) {
       products,
       hasNextPage: Boolean(result?.data?.productOfferV2?.pageInfo?.hasNextPage)
     });
-  } catch {
+  } catch (error) {
+    // Registra apenas a mensagem técnica; nunca registra App ID, Secret ou assinatura.
+    const diagnostic = error instanceof Error ? error.message : "Falha desconhecida na requisição";
+    console.error("[Shopee API] Falha de conexão:", diagnostic);
+
     return NextResponse.json(
-      { status: "error", message: "Não foi possível conectar à Shopee. Verifique a conexão e tente novamente." },
+      {
+        status: "error",
+        message: "Falha ao conectar com a API da Shopee.",
+        diagnostic: diagnostic.slice(0, 240)
+      },
       { status: 502 }
     );
   }
